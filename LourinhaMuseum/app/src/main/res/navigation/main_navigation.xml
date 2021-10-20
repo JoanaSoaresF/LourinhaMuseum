@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main_navigation"
+            app:startDestination="@id/welcomeFragment">
+    <fragment
+        android:id="@+id/all_cards_fragment"
+        android:name="com.example.lourinhamuseum.screens.allCards.AllCardsFragment">
+        <action
+            android:id="@+id/start_detection"
+            app:destination="@id/vuforia_destination"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/show_info_found"
+            app:destination="@id/informationFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" /><action
+        android:id="@+id/showScoresAction"
+        app:destination="@id/scoresFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/vuforia_destination"
+        android:name="com.example.lourinhamuseum.screens.vuforia.VuforiaFragment"
+        android:label="vuforia_fragment">
+        <action
+            android:id="@+id/show_info"
+            app:destination="@id/informationFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/all_cards_fragment" />
+        <argument
+            android:name="imageToDetect"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.example.lourinhamuseum.screens.information.InformationFragment"
+        android:label="InformationFragment">
+        <argument
+            android:name="pointDetected"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.lourinhamuseum.screens.welcome.WelcomeFragment"
+        android:label="WelcomeFragment">
+        <action
+            android:id="@+id/start_game"
+            app:destination="@id/all_cards_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoresFragment"
+        android:name="com.example.lourinhamuseum.screens.scores.ScoresFragment"
+        android:label="@string/scores_string" />
+    </navigation>

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Museu da Lourinhã</string>
+ <string name="vuforia_error_message">Ocorreu um erro na inicialização do Vuforia.</string>
+    <string name="leaving_message">Deseja sair da aplicação?</string>
+    <string name="camera_permissions_message">As permissões da câmara são necessárias
+        para fazer a deteção de imagens. Sem a permissão a aplicação não irá
+        funcionar.\nDeseja permitir acesso à câmara?</string>
+    <string name="yes_button">Sim</string>
+    <string name="no_button">Não</string>
+    <string name="ok_button">OK</string>
+   <string name="welcome_title">Escreve o teu nome</string>
+    <string name="welcome_button_download">Carregar</string>
+    <string name="welcome_button_cancel">Cancelar</string>
+    <string name="welcome_button_play">Começar a Jogar</string>
+    <string name="welcome_username">Bem vindo, %s</string>
+    <string name="username_error">Nome de utilizador inválido, tenta novamente.</string>
+    <string name="error_loading_museum_button">Erro, tenta novamente</string>
+    <string name="error_loading_museum_warning">Houve um erro a carregar as
+        informações do museu. Verifica a conexão à Internet</string>
+    <string name="download_error">Ocorreu um erro a guardar os ficheiros, tente
+        novamente</string>
+    <string name="ajuda_text">Ajuda</string>
+    <string name="text_title">Descrição Textual</string>
+    <string name="loading">A carregar…</string>
+    <string name="next">Próxima</string>
+    <string name="done_question">Concluir</string>
+    <string name="score">Pontuação: %d</string>
+    <string name="score_points">%d pontos</string>
+    <string name="found">Encontrado</string>
+    <string name="menu_title">Menu</string>
+    <string name="o_museu_poros">O Museu POROS</string>
+    <string name="instructions_string">Instruções</string>
+    <string name="scores_string">Pontuações Globais</string>
+    <string name="config_string">Configurações</string>
+    <string name="credits_string">Créditos</string>
+    <string name="choose_username">Escolhe um nome</string>
+    <string name="global_scores">Tabela de Pontuações</string>
+    <string name="searching">À Procura…</string>
+    <string name="quiz_title">Quizz</string>
+    <string name="score_button_text">+%d pontos</string><string name="name">Nome</string><string name="points">Pontos</string>
+   </resources>

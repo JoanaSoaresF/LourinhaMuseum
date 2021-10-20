@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:id="@+id/quiz_view"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+    <ImageView
+        android:id="@+id/quiz_papyrus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/papiro"
+        tools:srcCompat="@drawable/papiro_rev"
+        tools:visibility="visible" />
+    <TextView
+        android:id="@+id/quiz_title"
+        style="@style/header_in_papyrus"
+        android:text="@string/quiz_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+    <ImageView
+        android:id="@+id/close_question_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fechar"
+        app:tint="@color/black" />
+    <TextView
+        android:id="@+id/question_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/roman_font"
+        android:isScrollContainer="true"
+        android:paddingStart="10dp"
+        android:paddingEnd="0dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/answerA_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_title"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="@string/camera_permissions_message" />
+    <com.example.lourinhamuseum.custom_view.AnswerView
+        android:id="@+id/answerA_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/answerB_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+    <com.example.lourinhamuseum.custom_view.AnswerView
+        android:id="@+id/answerB_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/answerC_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+    <com.example.lourinhamuseum.custom_view.AnswerView
+        android:id="@+id/answerC_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/answerD_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+    <com.example.lourinhamuseum.custom_view.AnswerView
+        android:id="@+id/answerD_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:clipToPadding="false"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/next_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" /><Button
+    android:id="@+id/next_button"
+    android:layout_width="150dp"
+    android:layout_height="50dp"
+    android:layout_marginBottom="35dp"
+    android:fontFamily="@font/roman_font"
+    android:paddingLeft="20dp"
+    android:paddingTop="6dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="6dp"
+    android:visibility="invisible"
+    app:backgroundTint="@null"
+    app:cornerRadius="80dp"
+    app:layout_constraintBottom_toBottomOf="@+id/quiz_papyrus"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:strokeColor="@color/white"
+    app:strokeWidth="2dp"
+    tools:text="@string/next"
+    tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</merge>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vuforiaViewModel"
+            type="com.example.lourinhamuseum.screens.vuforia.VuforiaViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/points_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1A000000"
+        tools:context=".screens.vuforia.VuforiaFragment">
+        <RelativeLayout
+            android:id="@+id/activity_main_glview_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="false"
+            android:background="#00FFFFFF"
+            android:visibility="visible">
+          </RelativeLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/detection_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:visibility="gone"
+            tools:showIn="@layout/vuforia_fragment"
+            tools:visibility="visible">
+              <ImageView
+                  android:id="@+id/outline_image"
+                  android:layout_width="0dp"
+                  android:layout_height="0dp"
+                  app:layout_constraintBottom_toTopOf="@id/detection_button"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:setImage="@{vuforiaViewModel.point.outlineImage}" /><ImageView
+            android:id="@+id/card_to_detect_image"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setImage="@{vuforiaViewModel.point.imageNotFound}"
+            app:srcCompat="@drawable/soldier_card" />
+            <Button
+                android:id="@+id/help_button"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="23dp"
+                android:background="@drawable/ajuda"
+                android:onClick="@{()->vuforiaViewModel.onHelpPressed()}"
+                app:backgroundTint="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ajuda" />
+            <Button
+                android:id="@+id/detection_button"
+                android:layout_width="195dp"
+                android:layout_height="54dp"
+                android:layout_marginBottom="42dp"
+                android:background="@drawable/cards_background"
+                android:fontFamily="@font/roman_font"
+                android:onClick="@{()->vuforiaViewModel.onCapturePressed()}"
+                android:text="@string/searching"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:visibility="visible"
+                app:backgroundTint="@null"
+                app:changeButton="@{vuforiaViewModel.detectionState}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.example.lourinhamuseum.custom_view.LoadingView
+            android:id="@+id/activity_main_loading_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#00FFFFFF"
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="bottom|center|center_horizontal|center_vertical"
+            android:visibility="visible"
+            tools:visibility="gone" />
+
+        <com.example.lourinhamuseum.custom_view.PopupInfoView
+            android:id="@+id/popup_help"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:popupShow="@{vuforiaViewModel.isPopupVisible}"
+            tools:visibility="gone">
+        </com.example.lourinhamuseum.custom_view.PopupInfoView>
+
+        </RelativeLayout>
+    </layout>

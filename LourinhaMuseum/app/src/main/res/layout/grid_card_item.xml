@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="point"
+        type="com.example.lourinhamuseum.data.domain.Point" />
+    <variable
+        name="clickListener"
+        type="com.example.lourinhamuseum.screens.allCards.CardGridAdapter.OnCardClicked" />
+
+</data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:paddingBottom="20dp">
+         <ImageView
+             android:id="@+id/card_image"
+             android:layout_width="wrap_content"
+             android:layout_height="170dp"
+             android:adjustViewBounds="true"
+             android:clickable="true"
+             android:focusable="true"
+             android:onClick="@{()->clickListener.onClick(point)}"
+             app:cardImage="@{point}"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             tools:srcCompat="@drawable/soldier_card" />
+        <TextView
+            android:id="@+id/point_score"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:fontFamily="@font/roman_font"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingTop="4dp"
+            android:text='@{point.hasIcon?String.valueOf(point.pointScore):"?"}'
+            android:textColor="@color/score_color"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/card_image"
+            app:layout_constraintTop_toTopOf="@+id/card_image"
+            tools:text="5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="header"><item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="fontFamily">@font/roman_font</item>
+    </style>
+    <style name="exit_button_style">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+<style name="exit_button_toolbar">
+    <item name="android:layout_width">30dp</item>
+    <item name="android:layout_height">30dp</item>
+    <item name="android:layout_marginStart">8dp</item>
+    <item name="android:layout_marginTop">8dp</item>
+    <item name="android:layout_marginBottom">8dp</item>
+</style><style name="back_button_style">
+    <item name="android:layout_width">61dp</item>
+    <item name="android:layout_height">61dp</item>
+    <item name="android:layout_alignParentTop">true</item>
+    <item name="android:layout_marginStart">17dp</item>
+    <item name="android:layout_marginTop">36dp</item>
+    <item name="android:clickable">true</item>
+    <item name="android:focusable">true</item>
+    <item name="android:scaleType">centerInside</item>
+    <item name="android:visibility">visible</item>
+</style>
+    <style name="header_in_papyrus">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">70dp</item>
+        <item name="android:layout_marginEnd">70dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:fontFamily">@font/roman_font</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:shadowColor">#65000000</item>
+        <item name="android:shadowDx">5</item>
+        <item name="android:shadowDy">5</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:visibility">invisible</item>
+    </style><style name="score_style"><item name="android:fontFamily">@font/roman_font</item><item name="android:paddingStart">10dp</item><item name="android:paddingTop">5dp</item><item name="android:paddingEnd">10dp</item><item name="android:paddingBottom">5dp</item><item name="android:textColor">@color/black</item><item name="android:textSize">16sp</item></style>
+
+
+
+</resources>

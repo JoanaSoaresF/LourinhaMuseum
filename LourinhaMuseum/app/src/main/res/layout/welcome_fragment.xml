@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="viewModel"
+        type="com.example.lourinhamuseum.screens.welcome.WelcomeViewModel" />
+    <variable
+        name="buttonColorState"
+        type="Integer" />
+
+</data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/fundo">
+
+
+     <ImageView
+         android:id="@+id/imageView"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="30dp"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:srcCompat="@drawable/poros_caderneta" /><ImageView
+        android:id="@+id/soldier2"
+        android:layout_width="228dp"
+        android:layout_height="311dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="230dp"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/soldado2"
+        tools:visibility="gone" /><ImageView
+        android:id="@+id/soldier1"
+        android:layout_width="268dp"
+        android:layout_height="335dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="169dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/soldado1"
+        tools:visibility="gone" /><TextView
+        android:id="@+id/welcome_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="244dp"
+        android:layout_marginBottom="357dp"
+        android:fontFamily="@font/roman_font"
+        android:text="@string/welcome_title"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+        <Button
+            android:id="@+id/usernameButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/load_button"
+            android:fontFamily="@font/roman_font"
+            android:text="@string/ok_button"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            app:backgroundTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/username_text_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/username_text_edit"
+            app:layout_constraintTop_toTopOf="@+id/username_text_edit"
+            tools:visibility="visible" /><EditText
+        android:id="@+id/username_text_edit"
+        android:layout_width="196dp"
+        android:layout_height="54dp"
+
+        android:layout_marginTop="20dp"
+        android:background="@drawable/load_button"
+        android:fontFamily="@font/roman_font"
+        android:hint="@string/choose_username"
+        android:inputType="textMultiLine|textPersonName|text"
+        android:padding="8dp"
+        android:singleLine="false"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_title"
+        tools:visibility="visible" />
+        <ProgressBar
+            android:id="@+id/files_progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="258dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="544dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="45dp"
+            android:max="100"
+            android:progress="@{viewModel.numFilesTransferred}"
+            android:progressDrawable="@drawable/button_progress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:progress="80"
+            tools:visibility="invisible" />
+        <Button
+            android:id="@+id/download_text"
+            android:layout_width="258dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="544dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="45dp"
+            android:background="@drawable/cards_background"
+            android:fontFamily="@font/roman_font"
+            android:gravity="center"
+            android:onClick="@{()->viewModel.buttonClicked()}"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="@string/welcome_button_download"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:backgroundTint="@null"
+            app:iconPadding="0dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/error_loading_museum_button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout></layout>

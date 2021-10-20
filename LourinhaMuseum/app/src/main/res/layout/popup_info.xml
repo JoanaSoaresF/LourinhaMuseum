@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:id="@+id/popup_info"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:showIn="@layout/vuforia_fragment"
+        tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/papiro_backgroud"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/papiro"
+        tools:srcCompat="@drawable/papiro_rev"
+        tools:visibility="visible" /><TextView
+        android:id="@+id/popup_title"
+        style="@style/header_in_papyrus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/text_title"
+        tools:visibility="visible" />
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginBottom="20dp"
+            android:rotation="-115"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/papiro_backgroud"
+            app:layout_constraintEnd_toEndOf="@+id/papiro_backgroud"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/sword"
+            tools:visibility="visible" />
+        <ScrollView
+            android:id="@+id/text_scroll"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="150dp"
+            android:animateLayoutChanges="false"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/popup_title"><LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:id="@+id/popup_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/roman_font"
+            android:gravity="clip_vertical|center_vertical"
+            android:isScrollContainer="false"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="@string/camera_permissions_message" /></LinearLayout>
+    </ScrollView>
+        <ImageView
+            android:id="@+id/popup_exit_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/fechar"
+            app:tint="@color/black"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</merge>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/navHeader"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="192dp">
+
+<TextView
+    android:id="@+id/navHeaderTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="80dp"
+    android:layout_marginEnd="25dp"
+    android:fontFamily="@font/roman_font"
+    android:text="@string/menu_title"
+    android:textAllCaps="true"
+    android:textColor="@color/white"
+    android:textSize="26dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent" /><ImageView
+    android:id="@+id/imageView2"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:scaleType="fitEnd"
+    android:translationY="-130dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/pontos_grande" /></androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.lourinhamuseum.screens.allCards.AllCardsViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/points_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fundo"
+        tools:context=".screens.allCards.AllCardsFragment">
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/cards_grid"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+
+          android:clipToPadding="false"
+          android:foregroundGravity="center"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/museum_score_text"
+          app:listAllCards="@{viewModel.allCards}"
+          tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          tools:listitem="@layout/grid_card_item"
+          tools:spanCount="3">
+
+    </androidx.recyclerview.widget.RecyclerView><ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginTop="450dp"
+        android:translationX="-50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shield" /><ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="250dp"
+        android:translationX="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sword" /><TextView
+        android:id="@+id/num_cards_text"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/numb_cards"
+        android:fontFamily="@font/roman_font"
+        android:paddingTop="10dp"
+        android:paddingEnd="41dp"
+        android:text="@{String.valueOf(viewModel.museum.numPointsToFind)}"
+        android:textAlignment="textEnd"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        android:translationX="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="26" /><TextView
+        android:id="@+id/museum_score_text"
+        android:layout_width="90dp"
+        android:layout_height="95dp"
+        android:background="@drawable/pontos_grande"
+        android:fontFamily="@font/roman_font"
+        android:gravity="center|center_horizontal"
+        android:lineSpacingExtra="34sp"
+        android:paddingBottom="35dp"
+        android:text="@{String.valueOf(viewModel.museum.score)}"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="55" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

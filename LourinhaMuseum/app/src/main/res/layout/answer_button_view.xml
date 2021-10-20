@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+    <Button
+        android:id="@+id/answer_button"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/quiz_button_black"
+        android:fontFamily="@font/roman_font"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/full_names"
+        tools:visibility="visible" />
+    <ImageView
+        android:id="@+id/check_answer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/answer_button"
+        app:layout_constraintStart_toEndOf="@+id/answer_button"
+        app:layout_constraintTop_toTopOf="@+id/answer_button"
+        app:srcCompat="@drawable/wrong_answer"
+        tools:srcCompat="@drawable/correct_answer"
+        tools:visibility="visible" /><TextView
+    android:id="@+id/question_score"
+    android:layout_width="75dp"
+    android:layout_height="60dp"
+    android:background="@drawable/pontos_button"
+    android:fontFamily="@font/roman_font"
+    android:gravity="center"
+    android:paddingRight="20dp"
+    android:textColor="@color/score_color"
+    android:textSize="14sp"
+    android:visibility="invisible"
+    app:layout_constraintBottom_toBottomOf="@+id/answer_button"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/answer_button"
+    tools:text="+5 pontos"
+    tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</merge>
