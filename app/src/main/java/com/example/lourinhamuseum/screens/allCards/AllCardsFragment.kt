@@ -95,10 +95,6 @@ class AllCardsFragment : Fragment() {
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.playLoop()
-    }
 
     private fun navigateToDetection() {
         findNavController().navigate(

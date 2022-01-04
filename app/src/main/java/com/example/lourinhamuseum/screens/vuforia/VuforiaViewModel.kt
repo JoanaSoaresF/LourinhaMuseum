@@ -1,18 +1,15 @@
 package com.example.lourinhamuseum.screens.vuforia
 
 
-import android.app.Activity
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.example.lourinhamuseum.R
 import com.example.lourinhamuseum.custom_view.PopupInfoController
 import com.example.lourinhamuseum.data.domain.Point
 import com.example.lourinhamuseum.data.repository.MuseumRepository
-import com.example.lourinhamuseum.utils.ApplicationSoundsManager
-import com.example.lourinhamuseum.vuforia.ImageTargetRenderer
-import com.example.lourinhamuseum.vuforia.VuforiaARSession
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 
@@ -34,13 +31,6 @@ class VuforiaViewModel(application: Application) : AndroidViewModel(application)
     private val TARGET = 0
     var permissionRequested = false
 
-    /* Objecto que faz a renderização das imagens captadas pela câmara do dispositivo. */
-    //private var mImageTargetRenderer: ImageTargetRenderer? = null
-
-    /* Objecto utilizado para criar uma sessão que utiliza a biblioteca de realidade aumentada Vuforia. */
-    private var mVuforiaARSession: VuforiaARSession = VuforiaARSession()
-    var mVuforiaState: LiveData<VuforiaARSession.State> =
-        mVuforiaARSession.vuforiaSessionState
 
     /**Objeto para sinalizar que a biblioteca Vuforia inicializou corretamente*/
     private var correctInitialized = false
@@ -89,8 +79,6 @@ class VuforiaViewModel(application: Application) : AndroidViewModel(application)
 
         if (detectionProgress == DETECTION_COMPLETE && lastImageDetected == pointId) {
             _detectionState.value = DetectionState.FOUND
-            val soundPlayer = ApplicationSoundsManager.getSoundManager()
-            soundPlayer.onDetectSound(getApplication())
         }
     }
 
@@ -115,97 +103,23 @@ class VuforiaViewModel(application: Application) : AndroidViewModel(application)
 
     }
 
-    /**
-     * Initializes vuforia session, only if it wasn't done yet
-     */
-    fun initializeVuforiaSession(activity: Activity) {
-        //only initializes if it isn't initialized
-        if (mVuforiaState.value == VuforiaARSession.State.UNKNOWN) {
-            viewModelScope.launch(Dispatchers.IO) {
-                mVuforiaARSession.initializeVuforiaAR(activity, TARGET)
-                mVuforiaState = mVuforiaARSession.vuforiaSessionState
-            }
-        }
-    }
-
-    fun createImageTargetRenderer(): ImageTargetRenderer {
-        return ImageTargetRenderer(mVuforiaARSession)
-    }
-
-    fun initARRendering() {
-        viewModelScope.launch(Dispatchers.IO) {
-            mVuforiaARSession.initVuforiaARRendering()
-        }
-    }
-
-    fun deinitVuforiaARRendering() {
-        viewModelScope.launch(Dispatchers.IO) {
-            mVuforiaARSession.deinitVuforiaARRendering()
-        }
-    }
-
-    fun startVuforiaAR() {
-        viewModelScope.launch(Dispatchers.IO) {
-            mVuforiaARSession.startVuforiaAR()
-        }
-    }
-
-    fun eliminateVuforiaResources() {
-        if (mVuforiaState.value != VuforiaARSession.State.UNKNOWN) {
-            mVuforiaARSession.stopVuforiaAR()
-            mVuforiaARSession.destroyVuforiaAR()
-        }
-    }
-
-    fun sinalizeCorrectARInitialization() {
-        correctInitialized = true
-        mVuforiaARSession.initVuforiaSessionDone()
-    }
-
-    fun correctARInitialization(): Boolean {
-        return correctInitialized
-    }
-
-    fun resumeVuforiaAR() {
-        viewModelScope.launch(Dispatchers.IO) {
-            mVuforiaARSession.resumeVuforiaAR()
-            mVuforiaARSession.cameraPerformAutoFocus()
-        }
-
-    }
-
-    fun pauseVuforiaAR() {
-        viewModelScope.launch(Dispatchers.IO) {
-            mVuforiaARSession.pauseVuforiaAR()
-        }
-
-    }
-
     fun onHelpPressed() {
         if (_detectionState.value != DetectionState.HELP_PRESSED) {
             _detectionState.value = DetectionState.HELP_PRESSED
-            pauseVuforiaAR()
         }
     }
 
     fun onCapturePressed() {
         Timber.i("Capture pressed")
-        if (_detectionState.value == DetectionState.FOUND) {
-            _detectionState.value = DetectionState.CAPTURE_PRESSED
-        }
+//        if (_detectionState.value == DetectionState.FOUND) {
+//            _detectionState.value = DetectionState.CAPTURE_PRESSED
+//        }
+        _detectionState.value = DetectionState.CAPTURE_PRESSED
     }
 
-    fun cameraPerformAutoFocus() {
-        Timber.i("cameraPerformAutoFocus")
-        mVuforiaARSession.cameraPerformAutoFocus()
-    }
-
-    fun cameraRestoreAutoFocus() {
-        mVuforiaARSession.cameraRestoreAutoFocus()
-    }
 
     override fun onClosePopup() {
-        resumeVuforiaAR()
+//        resumeVuforiaAR()
         navigationDone()
     }
 

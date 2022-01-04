@@ -53,11 +53,6 @@ class WelcomeViewModel(application: Application) : AndroidViewModel(application)
         get() = _isUserDefined
 
     init {
-
-        viewModelScope.launch {
-            museumRepository.refreshRanking()
-        }
-
         loadMuseum()
     }
 

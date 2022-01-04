@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
         <variable
             name="vuforiaViewModel"
             type="com.example.lourinhamuseum.screens.vuforia.VuforiaViewModel" />
@@ -17,14 +17,13 @@
         android:layout_height="match_parent"
         android:background="#1A000000"
         tools:context=".screens.vuforia.VuforiaFragment">
-        <RelativeLayout
-            android:id="@+id/activity_main_glview_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="false"
-            android:background="#00FFFFFF"
-            android:visibility="visible">
-          </RelativeLayout>
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/view_finder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/detection_view"
             android:layout_width="match_parent"
@@ -34,23 +33,15 @@
             tools:showIn="@layout/vuforia_fragment"
             tools:visibility="visible">
               <ImageView
-                  android:id="@+id/outline_image"
-                  android:layout_width="0dp"
-                  android:layout_height="0dp"
-                  app:layout_constraintBottom_toTopOf="@id/detection_button"
-                  app:layout_constraintEnd_toEndOf="parent"
+                  android:id="@+id/card_to_detect_image"
+                  android:layout_width="wrap_content"
+                  android:layout_height="100dp"
+                  android:layout_marginStart="12dp"
+                  android:layout_marginTop="100dp"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
-                  app:setImage="@{vuforiaViewModel.point.outlineImage}" /><ImageView
-            android:id="@+id/card_to_detect_image"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="100dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:setImage="@{vuforiaViewModel.point.imageNotFound}"
-            app:srcCompat="@drawable/soldier_card" />
+                  app:setImage="@{vuforiaViewModel.point.imageNotFound}"
+                  app:srcCompat="@drawable/soldier_card" />
             <Button
                 android:id="@+id/help_button"
                 android:layout_width="150dp"
@@ -81,16 +72,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <com.example.lourinhamuseum.custom_view.LoadingView
-            android:id="@+id/activity_main_loading_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="#00FFFFFF"
-            android:foregroundGravity="center_vertical|center|center_horizontal"
-            android:gravity="bottom|center|center_horizontal|center_vertical"
-            android:visibility="visible"
-            tools:visibility="gone" />
 
         <com.example.lourinhamuseum.custom_view.PopupInfoView
             android:id="@+id/popup_help"

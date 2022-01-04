@@ -10,7 +10,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.lourinhamuseum.data.domain.Museum
 import com.example.lourinhamuseum.data.domain.Point
 import com.example.lourinhamuseum.data.repository.MuseumRepository
-import com.example.lourinhamuseum.utils.ApplicationSoundsManager
 
 class AllCardsViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -19,8 +18,6 @@ class AllCardsViewModel(application: Application) : AndroidViewModel(application
     enum class State {
         UNKNOWN, REQUEST_PERMISSIONS, PERMISSIONS_GRANTED, DETECTION, INFO
     }
-
-    val soundPlayer by lazy { ApplicationSoundsManager.getSoundManager() }
 
     private val _state = MutableLiveData<State>()
     val state: LiveData<State>
@@ -85,7 +82,6 @@ class AllCardsViewModel(application: Application) : AndroidViewModel(application
     }
 
     private fun navigateToCorrectFragment(point: Point) {
-        soundPlayer.onClickSound(getApplication())
         if (point.isFound) {
             _state.value = State.INFO
         } else {
@@ -105,8 +101,5 @@ class AllCardsViewModel(application: Application) : AndroidViewModel(application
         _state.value = State.PERMISSIONS_GRANTED
     }
 
-    fun playLoop() {
-        soundPlayer.onLoopSound(getApplication())
-    }
 
 }

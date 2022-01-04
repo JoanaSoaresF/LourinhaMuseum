@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.lourinhamuseum.R
 import com.example.lourinhamuseum.databinding.WelcomeFragmentBinding
-import com.example.lourinhamuseum.utils.ApplicationSoundsManager
 import timber.log.Timber
 
 
@@ -197,7 +196,6 @@ class WelcomeFragment : Fragment() {
             usernameEditText.visibility = View.VISIBLE
         }.setDuration(1000L).start()
         soldier2.animate().translationXBy(500F).setDuration(1000L).start()
-        ApplicationSoundsManager.getSoundManager().onDownloadClick(requireContext())
 
     }
 
@@ -232,7 +230,6 @@ class WelcomeFragment : Fragment() {
             .translationX(200F)
             .setDuration(1500L)
             .start()
-        ApplicationSoundsManager.getSoundManager().onDownloadClick(requireContext())
 
     }
 

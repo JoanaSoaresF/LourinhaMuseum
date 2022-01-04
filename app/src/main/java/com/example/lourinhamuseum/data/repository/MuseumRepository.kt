@@ -9,14 +9,11 @@ import androidx.lifecycle.Transformations
 import com.example.lourinhamuseum.data.SharedPreferencesManager
 import com.example.lourinhamuseum.data.database.MuseumDatabase
 import com.example.lourinhamuseum.data.database.ScoresDatabase
-import com.example.lourinhamuseum.data.database.entities.DatabaseScore
 import com.example.lourinhamuseum.data.database.entities.asDomainModel
 import com.example.lourinhamuseum.data.domain.*
 import com.example.lourinhamuseum.data.network.FileManager
 import com.example.lourinhamuseum.data.network.Network
 import com.example.lourinhamuseum.data.network.museumObjects.asDatabaseModel
-import com.example.lourinhamuseum.data.network.rankingObjects.NetworkRankingScore
-import com.example.lourinhamuseum.data.network.rankingObjects.asDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -129,7 +126,7 @@ class MuseumRepository private constructor(context: Context) {
         Timber.d("Load museum network available ${isNetworkAvailable()}")
         if (isNetworkAvailable()) {
             val networkMuseum =
-                Network.museumRetrofit.loadMuseum(Network.LANGUAGE_CODE, Network.API_KEY)
+                Network.museumRetrofit.loadMuseum()
             //insert museum into database
             val databaseMuseum = networkMuseum.asDatabaseModel()
             database.museumDao.insertMuseum(databaseMuseum)
@@ -229,21 +226,6 @@ class MuseumRepository private constructor(context: Context) {
 
 
     /**
-     * Refresh the scores stored in the offline cache
-     * To actuality load the scores for use observe [ranking]
-     */
-    suspend fun refreshRanking() {
-        if (isNetworkAvailable()) {
-            Timber.d("Ranking update")
-            withContext(Dispatchers.IO) {
-                val scores = Network.museumRetrofit.getRanking(Network.API_KEY)
-                rankingDatabase.scoresDao.insertScores(*scores.asDatabaseModel())
-            }
-        }
-
-    }
-
-    /**
      * Saves the username selected to the shared preferences
      * @param username username to save
      *
@@ -256,47 +238,6 @@ class MuseumRepository private constructor(context: Context) {
         }
     }
 
-    /**
-     * Uploads the the museum score if it changed since the last upload,
-     * refreshes the ranking.
-     * When there isn't network connection the user score is stored in the local
-     * database and the results will be only the scores store in the local database
-     */
-    suspend fun updateScores() {
-        if (isNetworkAvailable()) {
-            withContext(Dispatchers.IO) {
-                if (username != null && userId != null && museum?.isScoreUpdated == true) {
-                    val score = museum?.score.toString()
-                    Timber.d("Score of user $username with id $userId updated to $score")
-                    val netScore = NetworkRankingScore(
-                        username = username!!,
-                        userId = userId,
-                        score = score,
-                        createdAt = createAt
-                    )
-
-                    val response = Network.museumRetrofit.sendRankingScore(
-                        Network.API_KEY,
-                        netScore
-                    )
-                    if (response.isSuccessful) {
-                        museum?.isScoreUpdated = false
-                    }
-                }
-                refreshRanking()
-            }
-        } else {
-            if (username != null && userId != null) {
-                val databaseScore = DatabaseScore(
-                    username = username!!,
-                    id = userId!!.toLong(),
-                    score = museum?.score?:0,
-                )
-                rankingDatabase.scoresDao.insertScores(databaseScore)
-            }
-        }
-
-    }
 
     /**
      * Verifies if the phone is connected to internet

@@ -9,9 +9,6 @@
         android:id="@+id/instructions"
         android:title="@string/instructions_string" />
     <item
-        android:id="@+id/scoresFragment"
-        android:title="@string/scores_string" />
-    <item
         android:id="@+id/config"
         android:title="@string/config_string" />
     <item

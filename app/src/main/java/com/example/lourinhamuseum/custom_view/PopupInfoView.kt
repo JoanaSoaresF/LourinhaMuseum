@@ -22,7 +22,6 @@ class PopupInfoView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     val popupTitle: TextView = findViewById(R.id.popup_title)
     val exitButton: ImageView = findViewById(R.id.popup_exit_button)
     val text: TextView = findViewById(R.id.popup_text)
-    val image: ImageView = findViewById(R.id.image)
     val textScroll: ScrollView = findViewById(R.id.text_scroll)
     override val papyrusImage: ImageView = findViewById(R.id.papiro_backgroud)
 
@@ -37,7 +36,6 @@ class PopupInfoView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
         textScroll.animate().start()
         exitButton.visibility = View.INVISIBLE
         popupTitle.visibility = View.INVISIBLE
-        image.visibility = View.INVISIBLE
 
     }
 
@@ -52,7 +50,6 @@ class PopupInfoView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
         exitButton.visibility = View.VISIBLE
         popupTitle.visibility = View.VISIBLE
         popupTitle.text = controller?.popupTitle
-        image.visibility = View.VISIBLE
     }
 
     override fun onShowStart() {
@@ -65,12 +62,10 @@ class PopupInfoView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
         textScroll.visibility = View.INVISIBLE
         papyrusImage.visibility = View.INVISIBLE
         popupTitle.visibility = View.INVISIBLE
-        image.visibility = View.INVISIBLE
         controller?.onClosePopup()
     }
 
     override fun onCloseStart() {
-        image.visibility = View.INVISIBLE
         popupTitle.visibility = View.INVISIBLE
         exitButton.visibility = View.INVISIBLE
         textScroll.animation = AnimationUtils.loadAnimation(context, R.anim.slide_up)

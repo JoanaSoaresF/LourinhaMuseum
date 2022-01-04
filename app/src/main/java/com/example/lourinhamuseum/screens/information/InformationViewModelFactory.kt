@@ -9,7 +9,7 @@ class InformationViewModelFactory(private val app:Application, private val point
     :ViewModelProvider
 .Factory
 {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(InformationViewModel::class.java)){
             return InformationViewModel(point, app) as T
         }

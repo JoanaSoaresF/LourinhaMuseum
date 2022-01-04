@@ -33,18 +33,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/text_title"
         tools:visibility="visible" />
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_marginBottom="20dp"
-            android:rotation="-115"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/papiro_backgroud"
-            app:layout_constraintEnd_toEndOf="@+id/papiro_backgroud"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/sword"
-            tools:visibility="visible" />
         <ScrollView
             android:id="@+id/text_scroll"
             android:layout_width="0dp"
