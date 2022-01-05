@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity(),
         supportActionBar?.hide()
 
         val binding: MainActivityBinding = DataBindingUtil.setContentView(
-            this, R.layout
-                .main_activity
+            this, R.layout.main_activity
         )
         val navigationButton = binding.navigationButton
         drawerLayout = binding.drawerLayout

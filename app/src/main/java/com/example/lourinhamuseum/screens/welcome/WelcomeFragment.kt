@@ -1,12 +1,13 @@
 package com.example.lourinhamuseum.screens.welcome
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getColorStateList
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.view.ViewCompat
@@ -27,11 +28,9 @@ class WelcomeFragment : Fragment() {
     }
     private lateinit var buttonText: TextView
     private lateinit var progressBarButton: ProgressBar
-    private lateinit var usernameEditText: EditText
-    private lateinit var usernameButton: Button
     private lateinit var welcomeTitle: TextView
-    private lateinit var soldier1: ImageView
-    private lateinit var soldier2: ImageView
+    private lateinit var dino1: ImageView
+    private lateinit var dino2: ImageView
 
 
     override fun onCreateView(
@@ -46,11 +45,9 @@ class WelcomeFragment : Fragment() {
         )
         buttonText = binding.downloadText
         progressBarButton = binding.filesProgressBar
-        usernameEditText = binding.usernameTextEdit
-        usernameButton = binding.usernameButton
-        welcomeTitle = binding.welcomeTitle
-        soldier1 = binding.soldier1
-        soldier2 = binding.soldier2
+//        welcomeTitle = binding.welcomeTitle
+        dino1 = binding.dino1
+        dino2 = binding.dino2
 
 
         //Set the viewModel for data binding - this allows the bound layout access to
@@ -66,7 +63,7 @@ class WelcomeFragment : Fragment() {
             Timber.d("Welcome state $state")
             when (state) {
                 WelcomeViewModel.State.READY -> setButtonDownload()
-                WelcomeViewModel.State.DOWNLOADING -> animate()
+                // WelcomeViewModel.State.DOWNLOADING -> animate()
                 WelcomeViewModel.State.PLAY -> setButtonPlay()
                 WelcomeViewModel.State.LOADING -> setLoadingButton()
                 WelcomeViewModel.State.ERROR -> setErrorButton()
@@ -78,36 +75,7 @@ class WelcomeFragment : Fragment() {
                 animateFinal()
             }
         })
-        viewModel.isUserDefined.observe(viewLifecycleOwner) {
 
-            Timber.d("Is user defined: $it")
-            if (it) {
-                setUserDefined()
-            }
-        }
-        usernameButton.setOnClickListener {
-            val username = usernameEditText.text.toString()
-            val success = viewModel.chooseUsername(username)
-            if (!success) {
-                Toast.makeText(
-                    context,
-                    getString(R.string.username_error),
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                animateInverse()
-            }
-            hideKeyboard()
-        }
-        binding.root.setOnClickListener {
-            usernameEditText.clearFocus()
-        }
-
-        usernameEditText.setOnFocusChangeListener { v, hasFocus ->
-            if (!hasFocus) {
-                hideKeyboard()
-            }
-        }
         return binding.root
     }
 
@@ -134,19 +102,10 @@ class WelcomeFragment : Fragment() {
     }
 
 
-    private fun hideKeyboard() {
-        val inputMethodManager =
-            requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as
-                    InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(usernameEditText.windowToken, 0)
-    }
-
     private fun setUserDefined() {
         welcomeTitle.visibility = View.GONE
 //        animateFinal()
-        usernameButton.visibility = View.GONE
-        usernameEditText.visibility = View.GONE
-        welcomeTitle.text = getString(R.string.welcome_username, viewModel.getUsername())
+        welcomeTitle.text = getString(R.string.welcome_username)
 
     }
 
@@ -155,7 +114,7 @@ class WelcomeFragment : Fragment() {
         progressBarButton.visibility = View.INVISIBLE
         buttonText.text = getString(R.string.loading)
 //        button.setBackgroundColor(getColor(requireContext(), R.color.loading_color))
-        buttonText.background = getDrawable(requireContext(),R.drawable.cards_background)
+        buttonText.background = getDrawable(requireContext(), R.drawable.cards_background)
         ViewCompat.setBackgroundTintList(
             buttonText, getColorStateList(
                 requireContext(), R.color.loading_color
@@ -184,32 +143,29 @@ class WelcomeFragment : Fragment() {
 //        buttonText.background = null
         ViewCompat.setBackgroundTintList(
             buttonText, getColorStateList(
-                requireContext(), R.color.transparent)
+                requireContext(), R.color.transparent
+            )
         )
 //        button.setBackgroundColor(getColor(requireContext(), R.color.color_button_play))
     }
 
     private fun animate() {
-        soldier1.animate().translationXBy(-600F).withEndAction {
+        dino1.animate().translationXBy(-600F).withEndAction {
             welcomeTitle.visibility = View.VISIBLE
-            usernameButton.visibility = View.VISIBLE
-            usernameEditText.visibility = View.VISIBLE
         }.setDuration(1000L).start()
-        soldier2.animate().translationXBy(500F).setDuration(1000L).start()
+        dino2.animate().translationXBy(500F).setDuration(1000L).start()
 
     }
 
     private fun animateInverse() {
         welcomeTitle.visibility = View.GONE
-        usernameButton.visibility = View.GONE
-        usernameEditText.visibility = View.GONE
 
-        soldier1.animate()
+        dino1.animate()
             .translationXBy(600F)
             .setDuration(1000L)
             .start()
 
-        soldier2.animate()
+        dino2.animate()
             .translationXBy(-500F)
             .setDuration(1000L)
             .start()
@@ -219,14 +175,14 @@ class WelcomeFragment : Fragment() {
     private fun animateFinal() {
         welcomeTitle.visibility = View.VISIBLE
 
-        soldier1.animate()
+        dino1.animate()
             .translationX(-300F)
             .setDuration(1500L)
             .withEndAction {
                 navigate()
             }.start()
 
-        soldier2.animate()
+        dino2.animate()
             .translationX(200F)
             .setDuration(1500L)
             .start()

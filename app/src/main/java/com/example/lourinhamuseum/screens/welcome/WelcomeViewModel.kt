@@ -40,17 +40,10 @@ class WelcomeViewModel(application: Application) : AndroidViewModel(application)
     private val museumRepository = MuseumRepository.getMuseumRepository(application)
     var museum: Museum? = null
 
-    val ranking = museumRepository.ranking
 
     val numFilesTransferred: LiveData<Int> = museumRepository.getNumberFilesTransferred()
     private var downloadFilesJob: Job? = null
 
-    /**
-     * Variables that sinalizes changes the state of the definition of the user name
-     */
-    private val _isUserDefined = MutableLiveData(museumRepository.isUserDefined)
-    val isUserDefined: LiveData<Boolean>
-        get() = _isUserDefined
 
     init {
         loadMuseum()
@@ -152,23 +145,6 @@ class WelcomeViewModel(application: Application) : AndroidViewModel(application)
 
     fun score(): Int {
         return museum?.score ?: 0
-    }
-
-    fun chooseUsername(username: String): Boolean {
-        var success = false
-        if (username != "") {
-            success = true
-            museumRepository.saveUsername(getApplication(), username)
-            _isUserDefined.value = museumRepository.isUserDefined
-            if(SharedPreferencesManager.isDownloadDone(getApplication())){
-                _buttonState.value = State.PLAY
-            }
-        }
-        return success
-    }
-
-    fun getUsername(): String {
-        return museumRepository.username ?: ""
     }
 
 }
