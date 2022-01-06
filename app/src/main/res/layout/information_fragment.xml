@@ -30,10 +30,9 @@
             android:id="@+id/point_image"
             layout="@layout/grid_card_item"
             android:layout_width="120dp"
-            android:layout_height="0dp"
+            android:layout_height="150dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/audio_player"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" /><ImageView
@@ -52,12 +51,13 @@
             android:id="@+id/audio_player"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="24dp"
             app:isPlaying="@{informationViewModel.reproductionListener}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline5">
+            app:layout_constraintTop_toBottomOf="@+id/point_image">
 
      </com.example.lourinhamuseum.custom_view.AudioPlayerView>
         <ImageView

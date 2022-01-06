@@ -44,6 +44,7 @@ class MuseumInfoFragment : Fragment() {
         val museum = MuseumRepository.getMuseumRepository(requireContext()).museum!!
 
         museumInfo.text = museum.contents[0].content
+        Timber.d("${museum.contents[0].content}xxxx")
 
 
 
