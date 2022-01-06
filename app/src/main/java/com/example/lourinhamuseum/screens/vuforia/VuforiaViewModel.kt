@@ -77,7 +77,8 @@ class VuforiaViewModel(application: Application) : AndroidViewModel(application)
      * Sinalizes that the navigation is complete, restoring the state
      */
     fun navigationDone() {
-        _detectionState.value = DetectionState.NOT_FOUND
+        //ATTENTION mudar estado inicial para NOT_FOUND
+        _detectionState.value = DetectionState.FOUND
         detectionProgress = 0
     }
 
