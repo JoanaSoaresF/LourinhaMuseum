@@ -130,17 +130,7 @@ class WelcomeViewModel(application: Application) : AndroidViewModel(application)
      * Sinalizes the event to trigger navigation
      */
     private fun play() {
-        if (museumRepository.isUserDefined) {
-            _navigateToGame.value = true
-        } else {
-            Toast.makeText(
-                getApplication(),
-                getApplication<Application>().getString(R.string.username_error),
-                Toast.LENGTH_LONG
-            ).show()
-            _buttonState.value = State.DOWNLOADING
-        }
-
+        _navigateToGame.value = true
     }
 
     fun score(): Int {

@@ -37,9 +37,12 @@ class VuforiaFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.vuforia_fragment, container, false)
 
-        cameraView = binding.viewFinder
         detectionView = binding.detectionView
         helpPopup = binding.popupHelp
+
+
+
+
 
 
         //image selected in the previous fragment
@@ -51,7 +54,7 @@ class VuforiaFragment : Fragment() {
         binding.vuforiaViewModel = viewModel
         //specify the current activity as the lifecycle owner of the binding. This is
         // used so that the binding can observe LiveData updates
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         //create vuforia session
 

@@ -12,7 +12,7 @@
     <string name="welcome_button_download">Carregar</string>
     <string name="welcome_button_cancel">Cancelar</string>
     <string name="welcome_button_play">Começar a Jogar</string>
-    <string name="welcome_username">Bem vindo, %s</string>
+    <string name="welcome_username">Bem vindo!</string>
     <string name="username_error">Nome de utilizador inválido, tenta novamente.</string>
     <string name="error_loading_museum_button">Erro, tenta novamente</string>
     <string name="error_loading_museum_warning">Houve um erro a carregar as

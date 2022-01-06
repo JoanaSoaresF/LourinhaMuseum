@@ -199,7 +199,7 @@ class DividerItemDecorator(context: Context) : RecyclerView.ItemDecoration() {
             val child: View = parent.getChildAt(i)
             val params = child.layoutParams as RecyclerView.LayoutParams
             val dividerTop: Int = child.top - 40/*- params.topMargin*/
-            val dividerBottom = child.bottom + 5/* + child.paddingBottom*/
+            val dividerBottom = child.bottom +40/* + child.paddingBottom*/
 
             if (i % ROW_IDENTIFIER == FIRST_IN_ROW_EVEN) {
                 mDivider.setBounds(dividerLeft, dividerTop, dividerRight, dividerBottom)

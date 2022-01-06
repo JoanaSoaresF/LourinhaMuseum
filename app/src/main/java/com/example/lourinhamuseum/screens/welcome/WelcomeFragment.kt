@@ -45,6 +45,7 @@ class WelcomeFragment : Fragment() {
         )
         buttonText = binding.downloadText
         progressBarButton = binding.filesProgressBar
+        welcomeTitle = binding.welcomeTitle
 //        welcomeTitle = binding.welcomeTitle
         dino1 = binding.dino1
         dino2 = binding.dino2

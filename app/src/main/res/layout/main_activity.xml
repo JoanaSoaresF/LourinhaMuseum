@@ -43,10 +43,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="@drawable/fundo"
+            android:background="@color/black"
             app:headerLayout="@layout/nav_header"
-            app:itemTextColor="@color/white"
             app:itemTextAppearance="@style/header"
+            app:itemTextColor="@color/white"
             app:menu="@menu/nav_drawer_menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
