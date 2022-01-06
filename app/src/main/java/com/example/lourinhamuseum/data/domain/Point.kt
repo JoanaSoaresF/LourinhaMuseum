@@ -26,9 +26,21 @@ data class Point(
 
     fun asDatabaseModel(): DatabasePoint {
         return DatabasePoint(
-            id, roomId, name, outlineImage, imageNotFound,
-            socialNetworkMedia, imageFound, title, description, helpTip, video, media,
-            isFound, isQuizCorrect, pointScore
+            id,
+            roomId,
+            name,
+            outlineImage,
+            imageNotFound,
+            socialNetworkMedia,
+            imageFound,
+            title,
+            description,
+            helpTip,
+            video,
+            media,
+            isFound,
+            isQuizCorrect,
+            pointScore
         )
     }
 }

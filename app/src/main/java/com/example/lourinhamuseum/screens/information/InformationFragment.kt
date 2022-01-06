@@ -66,7 +66,7 @@ class InformationFragment : Fragment() {
         textPopup.setPopupController(viewModel)
 
         binding.informationViewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         viewModel.pointObservable.observe(viewLifecycleOwner) {
             binding.pointImage.point = it

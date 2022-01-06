@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/main_navigation"
             app:startDestination="@id/welcomeFragment">
     <fragment
@@ -20,12 +21,8 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" /><action
-        android:id="@+id/showScoresAction"
-        app:destination="@id/scoresFragment"
-        app:enterAnim="@android:anim/fade_in"
-        app:exitAnim="@android:anim/fade_out"
-        app:popEnterAnim="@android:anim/fade_in"
-        app:popExitAnim="@android:anim/fade_out" />
+        android:id="@+id/showMuseumInfo"
+        app:destination="@id/museumInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/vuforia_destination"
@@ -62,9 +59,9 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
-    </fragment>
-    <fragment
-        android:id="@+id/scoresFragment"
-        android:name="com.example.lourinhamuseum.screens.scores.ScoresFragment"
-        android:label="@string/scores_string" />
+    </fragment><fragment
+    android:id="@+id/museumInfoFragment"
+    android:name="com.example.lourinhamuseum.screens.museumInfo.MuseumInfoFragment"
+    android:label="fragment_museum_info"
+    tools:layout="@layout/fragment_museum_info" />
     </navigation>

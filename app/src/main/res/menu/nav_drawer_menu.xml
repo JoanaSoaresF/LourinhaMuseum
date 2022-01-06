@@ -3,7 +3,7 @@
   
 
     <item
-        android:id="@+id/museum_info"
+        android:id="@+id/museumInfoFragment"
         android:title="@string/o_museu_poros" />
     <item
         android:id="@+id/instructions"

@@ -6,7 +6,6 @@ import android.os.Environment
 import android.view.View
 import androidx.core.net.toUri
 import androidx.lifecycle.*
-import com.example.lourinhamuseum.utils.PlayerManager
 import com.example.lourinhamuseum.R
 import com.example.lourinhamuseum.custom_view.AudioPlayerController
 import com.example.lourinhamuseum.custom_view.PopupInfoController
@@ -14,6 +13,7 @@ import com.example.lourinhamuseum.custom_view.QuizController
 import com.example.lourinhamuseum.data.domain.Point
 import com.example.lourinhamuseum.data.domain.Question
 import com.example.lourinhamuseum.data.repository.MuseumRepository
+import com.example.lourinhamuseum.utils.PlayerManager
 import kotlinx.coroutines.launch
 import java.io.File
 
@@ -237,6 +237,11 @@ class InformationViewModel(val pointId: Int, application: Application) :
 
     override val popupTitle: String
         get() = getApplication<Application>().getString(R.string.text_title)
+
+    val isPopupOpen = Transformations.map(_state) {
+        it == State.QUIZ || it == State.TEXT
+    }
+
 }
 
 

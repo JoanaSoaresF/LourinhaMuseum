@@ -25,21 +25,12 @@ class VuforiaViewModel(application: Application) : AndroidViewModel(application)
     }
 
 
-    /* Identificador do tipo de reconhecimento feito pela aplicação.
-     * Neste exemplo utilizamos apenas o ImageTarget que está definido com o identificador número 0
-     * no ficheiro AppController.h. */
-    private val TARGET = 0
-    var permissionRequested = false
-
-
-    /**Objeto para sinalizar que a biblioteca Vuforia inicializou corretamente*/
-    private var correctInitialized = false
-
     /**
      * Objecto para sinalizar que se deve passar para o fragmento que mostra as
      * informações de uma imagem, ou alterações nos botões apresentados
      */
-    private val _detectionState = MutableLiveData(DetectionState.NOT_FOUND)
+    //ATTENTION mudar estado inicial para NOT_FOUND
+    private val _detectionState = MutableLiveData(DetectionState.FOUND)
     val detectionState: LiveData<DetectionState>
         get() = _detectionState
 
@@ -94,7 +85,8 @@ class VuforiaViewModel(application: Application) : AndroidViewModel(application)
      * Sets the point to detect in the session
      */
     fun setPointToDetect(id: Int) {
-        _detectionState.value = DetectionState.NOT_FOUND
+        //ATTENTION mudar estado inicial para NOT_FOUND
+        _detectionState.value = DetectionState.FOUND
         detectionProgress = 0
         pointId = id
         repository.museum?.let {
@@ -111,15 +103,14 @@ class VuforiaViewModel(application: Application) : AndroidViewModel(application)
 
     fun onCapturePressed() {
         Timber.i("Capture pressed")
-//        if (_detectionState.value == DetectionState.FOUND) {
-//            _detectionState.value = DetectionState.CAPTURE_PRESSED
-//        }
-        _detectionState.value = DetectionState.CAPTURE_PRESSED
+        if (_detectionState.value == DetectionState.FOUND) {
+            _detectionState.value = DetectionState.CAPTURE_PRESSED
+        }
+        //_detectionState.value = DetectionState.CAPTURE_PRESSED
     }
 
 
     override fun onClosePopup() {
-//        resumeVuforiaAR()
         navigationDone()
     }
 

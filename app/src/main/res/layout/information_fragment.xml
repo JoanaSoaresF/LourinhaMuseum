@@ -13,76 +13,94 @@
 
 
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/information_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:background="#DCDCDC"
+        android:background="@drawable/fundo"
+        android:backgroundTint="#2DFFFFFF"
+        android:backgroundTintMode="add"
         android:visibility="visible">
 
+        <include
+            android:id="@+id/point_image"
+            layout="@layout/grid_card_item"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/audio_player"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" /><ImageView
+        android:id="@+id/text_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{()->informationViewModel.showText()}"
+        app:layout_constraintBottom_toTopOf="@+id/audio_player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/quiz_button"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_button"
+        app:srcCompat="@drawable/texto" />
+        <com.example.lourinhamuseum.custom_view.AudioPlayerView
+            android:id="@+id/audio_player"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:isPlaying="@{informationViewModel.reproductionListener}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline5">
+
+     </com.example.lourinhamuseum.custom_view.AudioPlayerView>
         <ImageView
-            android:id="@+id/text_button"
+            android:id="@+id/quiz_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:cropToPadding="false"
             android:focusable="true"
-            android:onClick="@{()->informationViewModel.showText()}"
-            app:layout_constraintBottom_toTopOf="@+id/audio_player"
+            android:onClick="@{()->informationViewModel.showQuiz()}"
+            android:visibility="@{informationViewModel.quizButtonVisibility()}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/quiz_button"
-            app:layout_constraintTop_toBottomOf="@+id/quiz_button"
-            app:srcCompat="@drawable/texto" /><com.example.lourinhamuseum.custom_view.AudioPlayerView
-        android:id="@+id/audio_player"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:isPlaying="@{informationViewModel.reproductionListener}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/point_image">
-
-     </com.example.lourinhamuseum.custom_view.AudioPlayerView><include
-        android:id="@+id/point_image"
-        layout="@layout/grid_card_item"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/quiz" />
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/guideline5"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               app:layout_constraintGuide_percent="0.25" /><androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/quiz_button"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /><ImageView
-        android:id="@+id/quiz_button"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:cropToPadding="false"
-        android:focusable="true"
-        android:onClick="@{()->informationViewModel.showQuiz()}"
-        android:visibility="@{informationViewModel.quizButtonVisibility()}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/quiz" />
-           <com.example.lourinhamuseum.custom_view.PopupInfoView
-               android:id="@+id/popup_info_text"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:visibility="gone"
-               app:popupShow="@{informationViewModel.isPopupVisible}"
-               tools:visibility="gone">
-        </com.example.lourinhamuseum.custom_view.PopupInfoView>
-        <com.example.lourinhamuseum.custom_view.QuizView
-            android:id="@+id/quiz_popup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            app:quizShow="@{informationViewModel.isQuizVisible}"
-            tools:visibility="gone">
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.70" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout><com.example.lourinhamuseum.custom_view.PopupInfoView
+    android:id="@+id/popup_info_text"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    app:popupShow="@{informationViewModel.isPopupVisible}"
+    tools:visibility="gone">
+           </com.example.lourinhamuseum.custom_view.PopupInfoView><com.example.lourinhamuseum.custom_view.QuizView
+    android:id="@+id/quiz_popup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    app:quizShow="@{informationViewModel.isQuizVisible}"
+    tools:visibility="gone">
            </com.example.lourinhamuseum.custom_view.QuizView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 </layout>

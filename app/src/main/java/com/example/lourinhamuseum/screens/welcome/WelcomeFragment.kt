@@ -46,7 +46,6 @@ class WelcomeFragment : Fragment() {
         buttonText = binding.downloadText
         progressBarButton = binding.filesProgressBar
         welcomeTitle = binding.welcomeTitle
-//        welcomeTitle = binding.welcomeTitle
         dino1 = binding.dino1
         dino2 = binding.dino2
 
@@ -56,9 +55,10 @@ class WelcomeFragment : Fragment() {
         binding.viewModel = viewModel
         //specify the current activity as the lifecycle owner of the binding. This is
         // used so that the binding can observe LiveData updates
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
 
+        welcomeTitle.visibility = View.GONE
         //Changes the button appearance according to the state
         viewModel.buttonState.observe(viewLifecycleOwner, { state ->
             Timber.d("Welcome state $state")
@@ -102,13 +102,6 @@ class WelcomeFragment : Fragment() {
         ).show()
     }
 
-
-    private fun setUserDefined() {
-        welcomeTitle.visibility = View.GONE
-//        animateFinal()
-        welcomeTitle.text = getString(R.string.welcome_username)
-
-    }
 
 
     private fun setLoadingButton() {

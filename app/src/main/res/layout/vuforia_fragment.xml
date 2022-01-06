@@ -17,6 +17,10 @@
         android:layout_height="match_parent"
         android:background="#1A000000"
         tools:context=".screens.vuforia.VuforiaFragment">
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
 
@@ -25,32 +29,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#00FFFFFF"
-            android:visibility="gone"
-            tools:showIn="@layout/vuforia_fragment"
-            tools:visibility="visible">
+            android:visibility="visible"
+            tools:showIn="@layout/vuforia_fragment">
 
 
-            <ImageView
-                  android:id="@+id/card_to_detect_image"
-                  android:layout_width="wrap_content"
-                  android:layout_height="100dp"
-                  android:layout_marginStart="12dp"
-                  android:layout_marginTop="100dp"
-                  app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintTop_toTopOf="parent"
-                  app:setImage="@{vuforiaViewModel.point.imageNotFound}"
-                  app:srcCompat="@drawable/soldier_card" />
-            <Button
-                android:id="@+id/help_button"
-                android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="23dp"
-                android:background="@drawable/ajuda"
-                android:onClick="@{()->vuforiaViewModel.onHelpPressed()}"
-                app:backgroundTint="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ajuda" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="70dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="100dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"><ImageView
+                android:id="@+id/card_to_detect_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:visibility="visible"
+                app:setImage="@{vuforiaViewModel.point.imageNotFound}"
+                tools:srcCompat="@drawable/cromo_nao_encontrado_1" /></androidx.cardview.widget.CardView><Button
+            android:id="@+id/help_button"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/ajuda"
+            android:onClick="@{()->vuforiaViewModel.onHelpPressed()}"
+            android:visibility="visible"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ajuda" />
             <Button
                 android:id="@+id/detection_button"
                 android:layout_width="195dp"

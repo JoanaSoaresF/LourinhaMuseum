@@ -76,6 +76,9 @@ class QuizView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
             }
         }
         nextButton.visibility = View.INVISIBLE
+        for(button in buttons){
+            button.visibility = View.INVISIBLE
+        }
 
 
     }

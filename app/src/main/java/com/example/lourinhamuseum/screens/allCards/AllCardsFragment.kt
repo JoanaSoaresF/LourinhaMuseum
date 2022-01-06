@@ -52,7 +52,7 @@ class AllCardsFragment : Fragment() {
         )
 
         //Allows Data Binding to Observe LiveData with the lifecycle of this fragment
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         //Giving the binding access to the view model
         binding.viewModel = viewModel
 

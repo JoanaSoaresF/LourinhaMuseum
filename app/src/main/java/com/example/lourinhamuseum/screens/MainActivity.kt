@@ -108,8 +108,8 @@ class MainActivity : AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val navController = this.findNavController(R.id.nav_host_fragment)
         when (item.itemId) {
-            R.id.scoresFragment -> {
-                navController.navigate(AllCardsFragmentDirections.showScoresAction())
+            R.id.museumInfoFragment -> {
+                navController.navigate(AllCardsFragmentDirections.showMuseumInfo())
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
